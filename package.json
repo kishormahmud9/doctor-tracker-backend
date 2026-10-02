@@ -1,33 +1,45 @@
 {
-  "name": "backend",
+  "name": "doctor-tracker-backend",
   "version": "1.0.0",
-  "description": "\"# doctor-tracker-backend\"",
-  "main": "index.js",
+  "description": "Doctor Tracker REST API backend service",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "lint": "eslint src/",
+    "test": "tsx --test --test-concurrency=1 src/tests/**/*.test.ts",
+    "seed:admin": "tsx src/scripts/seedAdmin.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kishormahmud9/doctor-tracker-backend.git"
-  },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "typescript",
+    "mongodb",
+    "mongoose",
+    "doctor-tracker"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/kishormahmud9/doctor-tracker-backend/issues"
-  },
-  "homepage": "https://github.com/kishormahmud9/doctor-tracker-backend#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.5",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.3"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/node": "^26.6.4",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.3",
+    "@types/supertest": "^7.2.1",
+    "eslint": "^10.11.0",
+    "supertest": "^7.3.0",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0"
   }
 }
