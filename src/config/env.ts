@@ -5,6 +5,10 @@ dotenv.config();
 const nodeEnv = process.env.NODE_ENV || "development";
 const isProduction = nodeEnv === "production";
 const isTest = nodeEnv === "test";
+const rawClientUrls = process.env.CLIENT_URL || "http://localhost:3000";
+const clientUrls = rawClientUrls
+    .split(",")
+    .map((url) => url.trim().replace(/\/+$/, ""));
 
 const jwtSecret = process.env.JWT_SECRET || (isProduction ? "" : "default_jwt_secret_change_in_production");
 
@@ -29,7 +33,8 @@ export const config = {
     jwtSecret,
     jwtExpiresIn: process.env.JWT_EXPIRES_IN || "24h",
     bcryptSaltRounds: parseInt(process.env.BCRYPT_SALT_ROUNDS || "12", 10),
-    clientUrl: process.env.CLIENT_URL || "http://localhost:3000",
+    clientUrls,
+    rawClientUrls,
     nodeEnv,
     isProduction,
     isTest,
